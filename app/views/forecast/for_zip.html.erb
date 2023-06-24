@@ -1,0 +1,36 @@
+<h1>Currently</h1>
+<div class="forecast">
+    <div class="title"><%= @forecast.current.last_updated %></div>
+    <img
+        class="icon"
+        src="<%= @forecast.current.condition.icon %>"
+        alt="<%= @forecast.current.condition.text %>" />
+    <div class="temp"><%= @forecast.current.temp_f %> F</div>
+    <div class="feelsLike">Feels like <%= @forecast.current.feelslike_f %> F</div>
+</div>
+
+<h2>Today</h2>
+<div class="forecast">
+    <img
+        class="icon"
+        src="<%= @forecast.details.day.condition.icon %>"
+        alt="<%= @forecast.details.day.condition.text %>" />
+    <div class="temp"><%= @forecast.details.day.condition.text %></div>
+    <div class="temp">
+        Low <%= @forecast.details.day.mintemp_f %> F/
+        High <%= @forecast.details.day.maxtemp_f %> F
+    </div>
+</div>
+
+<h2>Hourly</h2>
+<div class="hourly">
+<%- @forecast.details.hour.each do |hour| %>
+    <div class="hour">
+        <div><%= hour.time %></div>
+        <div><%= hour.temp_f %> F</div>
+        <div>
+            <img src="<%= hour.condition.icon %>" alt="<%= hour.condition.text %>" />
+        </div>
+    </div>
+<%- end %>
+</div>

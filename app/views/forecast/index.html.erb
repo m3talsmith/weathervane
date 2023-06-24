@@ -1,0 +1,6 @@
+<h1>Weather Forecast for your Zipcode</h1>
+<%= form_with url: "/forzip", data: {turbo: false} do |form| %>
+    <%= form.label :zip, "Zipcode" %>
+    <%= form.text_field :zip %>
+    <%= form.submit "Get Forecast" %>
+<%- end %>
